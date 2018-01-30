@@ -1,18 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class healthText : MonoBehaviour {
 
     public GameObject healthParent;
 
-    private TextMesh text;
+    private Text text;
     private health thisHealth;
     private int currentHealth;
 
     private void Start()
     {
-        text = GetComponent<TextMesh>();
+        text = GetComponent<Text>();
         thisHealth = healthParent.GetComponent<health>();
         currentHealth = thisHealth.getHealth();
     }

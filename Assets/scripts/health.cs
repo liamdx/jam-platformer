@@ -9,9 +9,19 @@ public class health : MonoBehaviour
 
     public int initHealth;
 
+    public GameObject deathObject;
+
     private void Start()
     {
         currentHealth = initHealth;
+    }
+    private void LateUpdate()
+    {
+        if(currentHealth <= 0)
+        {
+            currentHealth = 0;
+            kill();
+        }
     }
 
     public int getHealth()
@@ -34,5 +44,16 @@ public class health : MonoBehaviour
         currentHealth = initHealth;
     }
 
+    public void kill()
+    {
+        GameObject death = Instantiate(deathObject, transform);
+        death.transform.position = transform.position;
+        Invoke("destroyThis", 1.0f);
+    }
+
+    public void destroyThis()
+    {
+        DestroyImmediate(this.gameObject);
+    }
 
 }
